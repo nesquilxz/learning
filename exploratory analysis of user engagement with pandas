@@ -1,0 +1,47 @@
+import pandas as pd
+
+# criando um dataset fictício de usuários
+dados = {
+    "usuario_id": [1, 2, 3, 4, 5, 6, 7, 8],
+    "plano": ["free", "premium", "free", "premium", "premium", "free", "free", "premium"],
+    "tempo_no_app_min": [15, 120, 30, 200, 180, 10, 25, 300],
+    "comprou_algo": [0, 1, 0, 1, 1, 0, 0, 1],
+    "idade": [18, 25, 22, 30, 28, 17, 20, 35]
+}
+
+df = pd.DataFrame(dados)
+
+# visão geral do dataset
+print("dataset:")
+print(df)
+print("-" * 40)
+
+# tempo médio no app por tipo de plano
+tempo_medio_plano = df.groupby("plano")["tempo_no_app_min"].mean()
+print("tempo medio no app por plano:")
+print(tempo_medio_plano)
+print("-" * 40)
+
+# taxa de conversão (quem comprou algo)
+taxa_conversao = df.groupby("plano")["comprou_algo"].mean() * 100
+print("taxa de conversao por plano (%):")
+print(taxa_conversao)
+print("-" * 40)
+
+# usuarios mais engajados (tempo acima da media geral)
+media_geral = df["tempo_no_app_min"].mean()
+
+usuarios_engajados = df[df["tempo_no_app_min"] > media_geral]
+print("usuarios mais engajados (acima da media):")
+print(usuarios_engajados)
+print("-" * 40)
+
+# idade media de quem compra vs quem nao compra
+idade_compra = df.groupby("comprou_algo")["idade"].mean()
+print("idade media (0 = nao comprou, 1 = comprou):")
+print(idade_compra)
+print("-" * 40)
+
+# insight simples
+print("insight rapido:")
+print("usuarios premium passam mais tempo no app e convertem mais...")
