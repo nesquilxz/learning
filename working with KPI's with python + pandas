@@ -1,0 +1,86 @@
+import pandas as pd
+
+# criando dados simulados de vendas (como se viessem de um banco de dados)
+dados = {
+    "data": pd.date_range(start="2025-01-01", periods=30, freq="D"),
+    "produto": ["Plano Básico", "Plano Pro", "Plano Enterprise"] * 10,
+    "receita": [
+        1200, 3500, 9000,
+        1300, 3700, 8800,
+        1250, 3600, 9100,
+        1400, 3900, 9500,
+        1500, 4200, 9800,
+        1600, 4500, 10000,
+        1700, 4800, 10500,
+        1800, 5000, 11000,
+        1900, 5200, 11500,
+        2000, 5500, 12000
+    ],
+    "custo": [
+        500, 1200, 4000,
+        520, 1300, 4200,
+        510, 1250, 4100,
+        550, 1350, 4300,
+        580, 1500, 4500,
+        600, 1600, 4700,
+        650, 1700, 4900,
+        700, 1800, 5200,
+        750, 1900, 5500,
+        800, 2000, 5800
+    ]
+}
+
+df = pd.DataFrame(dados)
+
+# calculando métricas financeiras
+df["lucro"] = df["receita"] - df["custo"]
+df["margem_lucro"] = (df["lucro"] / df["receita"]) * 100
+
+# kpis gerais
+kpis = {
+    "receita_total": df["receita"].sum(),
+    "custo_total": df["custo"].sum(),
+    "lucro_total": df["lucro"].sum(),
+    "margem_media": df["margem_lucro"].mean()
+}
+
+kpis_df = pd.DataFrame([kpis])
+
+# análise por produto
+analise_produto = (
+    df.groupby("produto")
+      .agg(
+          receita_total=("receita", "sum"),
+          lucro_total=("lucro", "sum"),
+          margem_media=("margem_lucro", "mean")
+      )
+      .sort_values(by="lucro_total", ascending=False)
+)
+
+# análise de crescimento diário
+df["receita_dia_anterior"] = df["receita"].shift(1)
+df["crescimento_diario"] = (
+    (df["receita"] - df["receita_dia_anterior"]) / df["receita_dia_anterior"]
+) * 100
+
+# insights automáticos (pique relatório executivo)
+produto_top = analise_produto.index[0]
+margem_critica = analise_produto[analise_produto["margem_media"] < 30]
+
+print("===== KPIs GERAIS =====")
+print(kpis_df.round(2))
+
+print("\n===== DESEMPENHO POR PRODUTO =====")
+print(analise_produto.round(2))
+
+print("\n===== INSIGHTS =====")
+print(f"Produto mais lucrativo: {produto_top}")
+
+if not margem_critica.empty:
+    print("Produtos com margem abaixo de 30% (atenção para custos):")
+    print(margem_critica.index.tolist())
+else:
+    print("Todos os produtos operam com margem saudável.")
+
+print("\n===== AMOSTRA DE CRESCIMENTO DIÁRIO =====")
+print(df[["data", "produto", "crescimento_diario"]].head(10).round(2))
