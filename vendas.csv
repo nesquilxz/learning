@@ -1,0 +1,11 @@
+cliente_id,categoria,valor_venda,data
+1,eletronicos,2500.00,2024-01-05
+2,moveis,1800.00,2024-01-06
+1,eletronicos,320.00,2024-01-10
+3,livros,90.00,2024-01-11
+4,eletronicos,4200.00,2024-02-02
+2,livros,120.00,2024-02-05
+3,moveis,2300.00,2024-02-10
+1,livros,60.00,2024-03-01
+5,eletronicos,3100.00,2024-03-03
+4,moveis,1500.00,2024-03-10
