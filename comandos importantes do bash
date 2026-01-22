@@ -1,10 +1,10 @@
 Comandos importantes do bash:
 
-ls: oq tem no diretorio
+ls: oq tem no diretorio 
 cd: change dir, muda diretório
 pwd: print work dir, onde estamos?
 control l para limpar
-
+nano arquivo -> modificar o texto de um arquivo
 cd .. -> volta um diretório 
 
 mkdir: make dir, criando uma pasta nova
