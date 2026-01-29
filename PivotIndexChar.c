@@ -1,6 +1,10 @@
 int pivotStringIndex(char* s) {
     int n = strlen(s);
     int i;
+
+//if (n % 2 != 0) return -1
+
+    
     for (i = 0; i < n; i++) {
        
       
