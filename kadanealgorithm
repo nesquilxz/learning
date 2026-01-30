@@ -1,0 +1,14 @@
+função maxSubArray(nums):
+    n = comprimento(nums)
+    se n == 0:
+        retornar 0   # ou lançar uma exceção, dependendo do contexto
+
+    soma_atual = nums[0]
+    soma_maxima = nums[0]
+
+    para i de 1 até n-1:
+        soma_atual = max(nums[i], soma_atual + nums[i])
+        se soma_atual > soma_maxima:
+            soma_maxima = soma_atual
+
+    retornar soma_maxima
