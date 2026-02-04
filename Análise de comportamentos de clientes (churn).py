@@ -11,6 +11,9 @@ dados = {
 
 df = pd.DataFrame(dados)
 
+filtro = df["meses_ativo"] >= 8
+maiorque8 = df[filtro]
+
 # média de uso mensal por status
 media_uso = df.groupby("cancelou")["uso_mensal"].mean() #clientes que cancelam usam menos o serviço? (mean serve para fazer uma média aritmética)
 
