@@ -1,0 +1,30 @@
+rfrom typing import List
+
+class Solution:
+    def reverseQueries(self, nums: List[int], queries: List[List[int]]) -> List[int]:
+        n = len(nums)
+        diff = [0] * (n + 1)
+
+        # marca quantas vezes cada posição é afetada
+        for l, r in queries:
+            diff[l] += 1
+            diff[r + 1] -= 1
+
+        # prefix sum → quantas reversões atingem cada índice
+        rev_count = [0] * n
+        cur = 0
+        for i in range(n):
+            cur += diff[i]
+            rev_count[i] = cur
+
+        res = nums[:]
+        i, j = 0, n - 1
+
+        # two pointers com paridade
+        while i < j:
+            if rev_count[i] % 2 == 1:
+                res[i], res[j] = res[j], res[i]
+            i += 1
+            j -= 1
+
+        return res
