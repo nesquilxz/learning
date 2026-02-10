@@ -1,48 +1,35 @@
 #include <stdio.h>
 #include <string.h>
 
-#define MAX 1000
 #define TAM 50
 
-typedef struct {
-    char palavra[TAM];
-    int qtd;
-} Palavra;
-
 int main() {
-    FILE *arq = fopen("texto.txt", "r");
-    if (arq == NULL) {
+    FILE *arq1, *arq2;
+    char atual[TAM], verif[TAM];
+    int cont;
+
+    arq1 = fopen("texto.txt", "r");
+    if (arq1 == NULL) {
         printf("Erro ao abrir o arquivo.\n");
         return 1;
     }
 
-    Palavra palavras[MAX];
-    int total = 0;
-    char aux[TAM];
+    while (fscanf(arq1, "%s", atual) == 1) {
+        cont = 0;
 
-    while (fscanf(arq, "%s", aux) != EOF) {
-        int achou = 0;
+        arq2 = fopen("texto.txt", "r");
 
-        for (int i = 0; i < total; i++) {
-            if (strcmp(palavras[i].palavra, aux) == 0) {
-                palavras[i].qtd++;
-                achou = 1;
-                break;
+        while (fscanf(arq2, "%s", verif) == 1) {
+            if (strcmp(atual, verif) == 0) {
+                cont++;
             }
         }
 
-        if (!achou) {
-            strcpy(palavras[total].palavra, aux);
-            palavras[total].qtd = 1;
-            total++;
-        }
+        fclose(arq2);
+
+        printf("%s: %d\n", atual, cont);
     }
 
-    fclose(arq);
-
-    for (int i = 0; i < total; i++) {
-        printf("%s: %d\n", palavras[i].palavra, palavras[i].qtd);
-    }
-
+    fclose(arq1);
     return 0;
 }
