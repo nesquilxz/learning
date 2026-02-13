@@ -1,6 +1,6 @@
 import pandas as pd
 
-# dados criados manualmente
+# dados criados manualmente (para datsframe, sem csv,)
 dados = {
     'vendedor': ['ana', 'bruno', 'carlos', 'ana', 'bruno', 'carlos'],
     'vendas': [1200, 800, 600, 1500, 900, 700],
