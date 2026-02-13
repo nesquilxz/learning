@@ -56,5 +56,5 @@ num_coluns = clientes.dtypes[~filtro].index.to_list()
 
 # %%
 
-clientes[~filtro].mean()
+clientes[num_coluns].mean()
 # %%
