@@ -48,8 +48,10 @@ redesSociais = ["flEmail",	"flTwitch",	"flYouTube",	"flBlueSky",	"flInstagram"]
 clientes[redesSociais].mean()
 # %%
 
-
+# retorna uma serie onde indices sao nomes das colunas, e os valores sao dados
 filtro = clientes.dtypes == "object"
+
+# rola o famoso "Broadcasting", que é "tansmissão", ou melhor, verifica cada valor de cada linha da serie e retorna true ou falso
 
 #obter as colunas do tipo numerico
 num_coluns = clientes.dtypes[~filtro].index.to_list()
