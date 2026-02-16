@@ -2,7 +2,7 @@
 #include <math.h>
 
 int bulbSwitch(int n) {
-    // a resposta é a raiz quadrada inteira de n
+    // o valor retornado é a raiz quadrada inteira de n0
     return (int)sqrt(n);
 }
 
