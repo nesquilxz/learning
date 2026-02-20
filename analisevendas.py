@@ -22,5 +22,5 @@ print("\nFaturamento total:", faturamento_total)
 # faturamento por produto usando groupby
 faturamento_por_produto = df.groupby("produto")["faturamento"].sum()
 
-print("\nFaturamento por produto:")
+print("\nFaturamento por produto: ")
 print(faturamento_por_produto)
