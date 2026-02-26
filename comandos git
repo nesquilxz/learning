@@ -5,7 +5,7 @@ git status
 git add arq : escolhe oq vai pro save (ou seja, commit)
 nano nome arquivo.txt : control o para escrever e control x para sair.
 git log : ve todos os commits
-
+git diff: saber oq alterou
 
 
 
