@@ -28,7 +28,7 @@ fn main() {
     let array = [1, 3, 5, 6, 9];
     
     println!("Digite um número: ");
-    let mut x: i32 = matematica::stringparanumero();
+    let mut x: i32 = matematica::stringparanumero(); //numero 
     
     
     let mut encontrado = false;
