@@ -1,3 +1,5 @@
+//neste problema, recebemos um arry com varios numeros, dentre estes numeros pode ter zeros. quero ordenar de forma que os zeros fiquem por ultimo
+
 void moveZeroes(int* nums, int numsSize) {
     int pos = 0;
     int i;
