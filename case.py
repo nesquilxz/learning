@@ -51,6 +51,7 @@ for i in files_names:
 
 #%%
 
+# concatena os dfs com base nos índices de nome e periodo
 pd.concat(dfs, axis=1)
 
 # %%
