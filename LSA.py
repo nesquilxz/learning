@@ -68,7 +68,7 @@ tempo_medio_area = (
 print("\ntempo médio de resolução por área:")
 print(tempo_medio_area)
 
-# áreas com mais violações de sla
+# áreas com mais violações de sla (Service Level Agreement)
 violacoes_por_area = (
     df
     .groupby("area_responsavel")["sla_estourado"]
