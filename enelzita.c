@@ -13,7 +13,7 @@ int main (void) {
     
 
     printf("Digite seu nome: \n");
-    scanf("%c", &nome);
+    scanf("%s", nome);
 
 
     int idade;
@@ -27,7 +27,7 @@ int main (void) {
     printf("Digite a quantidade de KiloWatts gasto pelo o usuário (%c): \n", nome);
     scanf("%f", &qtdKw);
 
-    float valorKw = salarioMin * 0,1;
+    float valorKw = salarioMin * 0.1;
 
     printf("O valor do Kw é de: %f \n", valorKw);
 
