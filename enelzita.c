@@ -5,15 +5,9 @@ int main (void) {
 
     char nome[100];
 
-    if (strlen(nome) > 100)
-    {
-        printf("É um nome muito grande! Escreva um nome menor!");
-        return 0;
-    }
-    
 
     printf("Digite seu nome: \n");
-    scanf("%s", nome);
+    scanf("%99s", nome);
 
 
     int idade;
@@ -24,10 +18,10 @@ int main (void) {
     scanf("%f", &salarioMin);
 
     float qtdKw;
-    printf("Digite a quantidade de KiloWatts gasto pelo o usuário (%c): \n", nome);
+    printf("Digite a quantidade de KiloWatts gasto pelo o usuário (%s): \n", nome);
     scanf("%f", &qtdKw);
 
-    float valorKw = salarioMin * 0.1;
+    float valorKw = salarioMin * 0.01;
 
     printf("O valor do Kw é de: %f \n", valorKw);
 
