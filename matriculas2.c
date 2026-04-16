@@ -48,11 +48,11 @@ int main(void) {
 
 
     printf("\n Digite as matrículas dos alunos de prog1\n");
-    preenchevetor(prog1, N);
+    preencheturma(prog1, N);
 
 
     printf("\n Digite as matrículas dos alunos de prog2\n");
-    preenchevetor(prog2, M);
+    preencheturma(prog2, M);
 
     verificairregulares(prog1, prog2, N, M);
 }
