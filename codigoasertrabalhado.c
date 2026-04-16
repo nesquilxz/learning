@@ -3,10 +3,10 @@
 
 // 16/05/2026 --> 16 05 2026
 
-int retornadata(char* data) {
+void retornadata(char* data, int *d, int *m, int *a) {
 
-    char *datafiltrada;
-    
+    char datafiltrada[8];
+
     for(int i = 0; i < strlen(data); i++) {
 
         if(strcmp(data[i], "/") != 0) {
@@ -19,7 +19,14 @@ int retornadata(char* data) {
 
     sprintf(dataint, "%d", datafiltrada);
 
-    return dataint;
+    
+
+    *d = dataint/1000000
+    *m = (dataint/10000)%100
+    *a = dataint % 10000
+    
+
+    
 
 }
 
@@ -29,15 +36,18 @@ int retornadata(char* data) {
 int main(void) {
 
     char *data;
+    int d, m, a;
     printf("Digite a data no formato DD/MM/AAAA: ");
     scanf("%s", data);
 
-    int datanumero;
-   
-   
-   datanumero =  retornadata(data);
 
-   printf("Data: %d", data);
+  retornadata(data, &d, &m, &a);
+
+    printf("Dia: %02d\n", dia);
+    printf("Mes: %02d\n", mes);
+    printf("Ano: %04d\n", ano);
+
+    return 0;
 
 
    return 0;
