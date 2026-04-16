@@ -16,7 +16,7 @@ void separaData(char *data, int* d, int* m, int *a) {
     M[2] = '\0';
     A[4] = '\0';
 
-//  int        char
+//  int        string
     *d = atoi(D);
     *m = atoi(M);
     *a = atoi(A);
