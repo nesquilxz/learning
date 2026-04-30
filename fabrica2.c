@@ -28,8 +28,8 @@ void lerdados(tEquipe *a) {
 
 }
 
-int calculamedia(tEquipe *a) {
-    int media = (a->quantidade[0] + a->quantidade[1] + a->quantidade[2]) / 3;
+float calculamedia(tEquipe a) {
+    float media = (a.quantidade[0] + a.quantidade[1] + a.quantidade[2]) / 3;
     return media;
 }
 
@@ -42,15 +42,15 @@ int n;
 printf("Digite a quantidade de equipes na empresa: ");
 scanf("%d", &n);
 
-tEquipe Equipes[n];
+tEquipe Equipes;
 int menorMedia = 9999, maiorMedia = 0;
 char melhorequipe[100], piorequipe[100];
 
 for(int i =0; i < n; i++) {
     printf("===== Para a equipe %d =====\n\n", i+1);
-    lerdados(&Equipes[i]);
+    lerdados(&Equipes);
 
-    int mediaAno = calculamedia(&Equipes[i]);
+    float mediaAno = calculamedia(Equipes);
 
     if(mediaAno > maiorMedia) {
         maiorMedia = mediaAno;
