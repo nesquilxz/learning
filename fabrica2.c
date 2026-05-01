@@ -42,24 +42,24 @@ int n;
 printf("Digite a quantidade de equipes na empresa: ");
 scanf("%d", &n);
 
-tEquipe Equipes;
+tEquipe Equipe;
 int menorMedia = 9999, maiorMedia = 0;
 char melhorequipe[100], piorequipe[100];
 
 for(int i =0; i < n; i++) {
     printf("===== Para a equipe %d =====\n\n", i+1);
-    lerdados(&Equipes);
+    lerdados(&Equipe);
 
-    float mediaAno = calculamedia(Equipes);
+    float mediaAno = calculamedia(Equipe);
 
     if(mediaAno > maiorMedia) {
         maiorMedia = mediaAno;
-        strcpy(melhorequipe, Equipes[i].nome);
+        strcpy(melhorequipe, Equipe[i].nome);
     }
 
     if(mediaAno < menorMedia) {
         menorMedia = mediaAno;
-        strcpy(piorequipe, Equipes[i].nome);
+        strcpy(piorequipe, Equipe[i].nome);
     }
     
 
