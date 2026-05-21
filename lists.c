@@ -14,8 +14,9 @@ typedef struct lista
 
 int busca(Tlista *a, int elem, int *pos) {
     int i = 0;
-    while ((i < a->total) && (elem>a->dado[i]))
-    {i++;}
+    while ((i < a->total) && (elem > a->dado[i])){
+
+        i++;}
     
     (*pos) = i;
     if ((i < a->total) && (elem == a->dado[i])){return 1;}
@@ -23,6 +24,44 @@ int busca(Tlista *a, int elem, int *pos) {
     return 0;
     
 }
+
+
+int buscabinaria(Tlista *a, int elem, int *pos) {
+
+    int ini = 0;
+    int fim = a->total - 1;
+    int meio;
+
+    while (ini <= fim) {
+
+        meio = (ini + fim) / 2;
+
+        if (elem == a->dado[meio]) {
+
+            *pos = meio;
+            return 1;
+        }
+
+        else if (elem > a->dado[meio]) {
+
+            ini = meio + 1;
+        }
+
+        else {
+
+            fim = meio - 1;
+        }
+    }
+
+    *pos = ini;
+    return 0;
+}
+
+
+ 
+
+
+
 
 
 void remover(Tlista *a, int elem) {
@@ -82,6 +121,7 @@ void insere(Tlista *a, int x) {
 
 
 
+
 void inicia(Tlista *a) {
     a->total = 0;
 }
@@ -92,6 +132,23 @@ void escreve(Tlista a) {
     }
     printf("\n");
 }
+
+
+
+void bubble(Tlista *a) {
+    int temp;
+    for(int i =0; i < a->total-1; i++) {
+        for(int j =0; j < a->total-1-i;j++) {
+            if(a->dado[j] > a->dado[j+1]) {
+                    temp = a->dado[j];
+                    a->dado[j] = a->dado[j+1];
+                    a->dado[j+1] = temp;
+                     
+            }
+        }
+    }
+}
+
 
 
 int main(void) {
@@ -108,6 +165,7 @@ int main(void) {
         printf("Digite o elemento: ");
         scanf("%d", &elem);
         insere(&L, elem);
+        bubble(&L);
 
     }
 
