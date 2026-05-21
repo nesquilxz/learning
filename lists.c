@@ -15,21 +15,19 @@ typedef struct lista
 int busca(Tlista *a, int elem, int *pos) {
     int i = 0;
     while ((i < a->total) && (elem>a->dado[i]))
-    {
-        i++;
-        (*pos) = i;
-        if ((i < a->total) && (elem == a->dado[i])){return 1;}
-
-    }
+    {i++;}
+    
+    (*pos) = i;
+    if ((i < a->total) && (elem == a->dado[i])){return 1;}
 
     return 0;
     
 }
 
 
-void remove(Tlista *a, int elem) {
+void remover(Tlista *a, int elem) {
 
-    int pos, achou = busca(a, elem, &pos),i;
+    int pos, achou = busca(a, elem, &pos);
 
      if (a->total == 0) {
         printf("Lista vazia!");
@@ -59,7 +57,7 @@ void remove(Tlista *a, int elem) {
 void insere(Tlista *a, int x) {
     int pos, achou = busca(a, x, &pos),i;
 
-    if (a->total > MAX) {
+    if (a->total >= MAX) {
         printf("Lista cheia!");
     }
 
@@ -71,7 +69,7 @@ void insere(Tlista *a, int x) {
 
     else {
         
-        for(i = a->total; i < x; i--) {
+        for(i = a->total; i > pos; i--) {
             a->dado[i] = a->dado[i-1];
         }
 
@@ -90,7 +88,7 @@ void inicia(Tlista *a) {
 
 void escreve(Tlista a) {
     for (int i =0; i < a.total; i++) {
-        printf("%d", a.dado[i]);
+        printf("%d ", a.dado[i]);
     }
     printf("\n");
 }
