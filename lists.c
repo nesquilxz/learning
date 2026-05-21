@@ -3,7 +3,7 @@
 
 #define MAX 10
 
-
+//se encontrar o do meio, encontrou, se ele for maior que o meio anda o inicio... maior que o meio, igual o meio, ou menor que o meio.
 
 typedef struct lista
 {
@@ -46,10 +46,10 @@ void remove(Tlista *a, int elem) {
         for(int i = pos; i < a->total-1; i++) {
 
         a->dado[i] = a->dado[i+1];
-        (a->total)--;
-            
-        }
+       
 
+        }
+ (a->total)--;
     }
     
 
