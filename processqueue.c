@@ -81,7 +81,7 @@ printf("\n Ordem de execução: \n");
 
 while(inicio != NULL) {
 
-    inicio = removefila(inicio, fim, fila, &processo, &texe);
+    inicio = removefila(inicio, fim, &processo, &texe);
 
     if (texe > quantum) {
         printf("\n Executando #P%d (%d)", processo, quantum);
