@@ -20,7 +20,7 @@ void preenchefila(Tfila**inicio, Tfila**fim, int processo, int texe) {
 
  
 
-    if (inicio == NULL) {
+    if ((*inicio) == NULL) {
         (*inicio) = el;
         
     }
@@ -38,10 +38,10 @@ void preenchefila(Tfila**inicio, Tfila**fim, int processo, int texe) {
 }
 
 
-Tfila* removefila(Tfila* inicio, Tfila* fim, int *num, int *texe) {
+Tfila* removefila(Tfila* inicio, int *num, int *texe) {
     Tfila* lixo;
 
-    if ((*inicio) != NULL) {
+    if (inicio != NULL) {
         *num = inicio->processo;
         *texe = inicio->texe;
         lixo = inicio;
@@ -49,7 +49,7 @@ Tfila* removefila(Tfila* inicio, Tfila* fim, int *num, int *texe) {
         free(lixo);
     }
 
-    return a;
+    return inicio;
 
 }
 
@@ -58,7 +58,7 @@ Tfila* removefila(Tfila* inicio, Tfila* fim, int *num, int *texe) {
 
 int main(void) {
 
-Tfila* fila, *inicio, *fim;
+Tfila *inicio, *fim;
 inicio = NULL;
 fim = NULL;
 int n, processo, texe;
@@ -71,7 +71,7 @@ for(int i = 0; i < n; i++) {
     printf("Digite o processo %d: ", i+1);
     scanf("%d", &processo);
     printf("Digite o tempo de execução do %d: ", i+1);
-    scanf("%d", &processo);
+    scanf("%d", &texe);
     preenchefila(&inicio, &fim, processo, texe);
 
 }
