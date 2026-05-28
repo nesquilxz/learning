@@ -38,7 +38,7 @@ void preenchefila(Tfila**inicio, Tfila**fim, int processo, int texe) {
 }
 
 
-Tfila* removefila(Tfila* inicio, Tfila* fim, Tfila *a, int *num, int *texe) {
+Tfila* removefila(Tfila* inicio, Tfila* fim, int *num, int *texe) {
     Tfila* lixo;
 
     if ((*inicio) != NULL) {
