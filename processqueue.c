@@ -11,10 +11,11 @@ typedef struct fila {
 } Tfila;
 
 
-Tfila* preenchefila(Tfila**inicio, Tfila**fim, Tfila *a, int processo, int texe) {
+void preenchefila(Tfila**inicio, Tfila**fim, Tfila *a, int processo, int texe) {
     Tfila *el;
     el = (Tfila*) malloc(sizeof(Tfila));
     el->processo = processo;
+    el->texe = texe;
     el->prox = NULL;
 
  
@@ -34,18 +35,17 @@ Tfila* preenchefila(Tfila**inicio, Tfila**fim, Tfila *a, int processo, int texe)
     
     
 
-    return inicio;
 }
 
 
 Tfila* removefila(Tfila* inicio, Tfila* fim, Tfila *a, int *num, int *texe) {
     Tfila* lixo;
 
-    if (inicio != NULL) {
+    if ((*inicio) != NULL) {
         *num = inicio->processo;
         *texe = inicio->texe;
-        lixo = a;
-        a = a->prox;
+        lixo = inicio;
+        inicio = inicio->prox;
         free(lixo);
     }
 
@@ -69,10 +69,10 @@ scanf("%d", &n);
 for(int i = 0; i < n; i++) {
 
     printf("Digite o processo %d: ", i+1);
-    scanf("%d", processo);
+    scanf("%d", &processo);
     printf("Digite o tempo de execução do %d: ", i+1);
-    scanf("%d", processo);
-    preenchefila(inicio, fim, fila, processo, texe);
+    scanf("%d", &processo);
+    preenchefila(&inicio, &fim, fila, processo, texe);
 
 }
 
@@ -81,7 +81,7 @@ printf("\n Ordem de execução: \n");
 
 while(inicio != NULL) {
 
-    inicio = removefila(inicio, fim, fila, processo, texe);
+    inicio = removefila(inicio, fim, fila, &processo, &texe);
 
     if (texe > quantum) {
         printf("\n Executando #P%d (%d)", processo, quantum);
