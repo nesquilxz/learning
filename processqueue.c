@@ -11,7 +11,7 @@ typedef struct fila {
 } Tfila;
 
 
-void preenchefila(Tfila**inicio, Tfila**fim, Tfila *a, int processo, int texe) {
+void preenchefila(Tfila**inicio, Tfila**fim, int processo, int texe) {
     Tfila *el;
     el = (Tfila*) malloc(sizeof(Tfila));
     el->processo = processo;
@@ -72,7 +72,7 @@ for(int i = 0; i < n; i++) {
     scanf("%d", &processo);
     printf("Digite o tempo de execução do %d: ", i+1);
     scanf("%d", &processo);
-    preenchefila(&inicio, &fim, fila, processo, texe);
+    preenchefila(&inicio, &fim, processo, texe);
 
 }
 
@@ -85,7 +85,7 @@ while(inicio != NULL) {
 
     if (texe > quantum) {
         printf("\n Executando #P%d (%d)", processo, quantum);
-        preenchefila(&inicio, &fim, fila, processo, texe-quantum);
+        preenchefila(&inicio, &fim, processo, texe-quantum);
     }
 
     else {
