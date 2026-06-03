@@ -1,3 +1,4 @@
+//sem nó cabeça...
 #define MAX 10
 #include <stdio.h>
 #include <string.h>
