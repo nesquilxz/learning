@@ -31,15 +31,21 @@ int busca(Tlista*a, int numero, Tlista **pre) {
 
 }
 
-void insere(Tlista**a, int numero) {
-    Tlista *pre = NULL; int x;
-    x = busca(*a, numero, &pre);
-    Tlista *el;
-    el = (Tlista*) malloc(sizeof(Tlista));
+void insere(Tlista** a, int numero) {
+    Tlista *pre = NULL; 
+    int x;
+    x = busca(*a, numero, &pre); 
+    
+    Tlista *el = (Tlista*) malloc(sizeof(Tlista));
     el->info = numero;
-    el->prox = pre->prox;
-    pre->prox = el;
-
+    
+    if (pre == NULL) { 
+        el->prox = *a;
+        *a = el;
+    } else {           
+        el->prox = pre->prox;
+        pre->prox = el;
+    }
 }
 
 
@@ -57,22 +63,7 @@ void imprime(Tlista *a) {
 
 
 
-Tlista* intercala (Tlista *a, Tlista *b) {
 
-    Tlista *auxA, *auxB;
-    auxA = a;
-    auxB = b;
-    while(auxA != NULL) {
-        auxA->prox = auxB;
-        b = auxB->prox;
-        auxB->prox = auxA->prox;
-        auxA = auxA->prox;
-    }
-   
-    return a;
-}
-
-//prof
 
 Tlista *intercalaprof (Tlista *a, Tlista *b) {
 
@@ -80,11 +71,11 @@ Tlista *intercalaprof (Tlista *a, Tlista *b) {
 
     aux1 = a;
     while(aux1 != NULL) {
-        aux2 = b;
-        b = b->prox;
-        b->prox = a->prox;
-        a->prox = b;
-        a = b->prox;
+        aux2 = b->prox;
+        b->prox = aux1->prox;
+        aux1->prox = b;
+        aux1 = b->prox;
+        b = aux2;
     }
 
     return a;
