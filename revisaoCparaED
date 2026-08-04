@@ -1,0 +1,65 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+//busca e insere
+
+typedef struct lista {
+    int info;
+    struct lista* prox;
+}Tlista;
+
+
+
+int buscaelem(Tlista *l, int elem, Tlista **preL) {
+
+    Tlista *aux = l, *pre = NULL;
+
+    if (aux == NULL) {
+        return 0;
+    }
+
+    while(aux != NULL && aux->info < elem) {
+        pre = aux;
+        aux = aux->prox;
+    }
+
+    (*preL) = pre;
+    if ((aux != NULL) && (aux->info == elem)) {
+        return 1;
+    }
+
+    return 0;
+
+}
+
+
+
+Tlista *inserelem(Tlista *L, int elem) {
+    Tlista * preL = NULL;
+    if (!busca(L, elem, &preL)) {
+        Tlista *novo = (Tlista*) malloc(sizeof(Tlista));
+        novo->info = elem;
+        
+        if ((L == NULL) || (preL=NULL)) {
+            novo->prox = NULL;
+            L = novo;
+        }
+
+        novo->prox = preL->prox;
+        preL->prox = novo;
+    }
+
+    return L;
+}
+
+
+
+int main(void) {
+
+    Tlista *l = NULL; Tlista *pre = NULL;
+
+
+
+}
+
+
