@@ -1,0 +1,40 @@
+Tlista *insereordenadorecursivorosseti(Tlista *l, int x) {
+
+
+    if ((l == NULL) || (l->info > x)) {
+        Tlista *novo = (Tlista*) malloc(sizeof(Tlista));
+        novo->info = x;
+        novo->prox = l;
+        return novo;
+    }
+
+    l->prox = insereordenadorecursivorosseti(l->prox, x);
+    return l;
+
+
+}
+
+Tlista *removelemento(Tlista * l, int x) {
+Tlista *lixo, *pre;
+if (busca(l, x, &pre)) {
+  if (l->info = elem) {
+  lixo = l;
+  l = l->prox;
+}
+
+else {lixo = pre->prox;
+pre->prox = lixo->prox;}
+
+free(lixo);
+return l;}
+
+
+
+void liberarec(Tlista *l) {
+if (l != NULL) {
+  liberarec(l->prox);
+  free(l);
+}
+
+
+//apenas revisao de funções recursivas para listas.
