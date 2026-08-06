@@ -40,8 +40,8 @@ Tlista *inserelem(Tlista *L, int elem) {
         Tlista *novo = (Tlista*) malloc(sizeof(Tlista));
         novo->info = elem;
         
-        if ((L == NULL) || (preL=NULL)) {
-            novo->prox = NULL;
+        if ((L == NULL) || (preL==NULL)) {
+            novo->prox = L;
             L = novo;
         }
 
@@ -50,6 +50,23 @@ Tlista *inserelem(Tlista *L, int elem) {
     }
 
     return L;
+}
+
+
+Tlista *insereordenadorecursivorosseti(Tlista *l, int x) {
+
+
+    if ((l == NULL) || (l->info > x)) {
+        Tlista *novo = (Tlista*) malloc(sizeof(Tlista));
+        novo->info = x;
+        novo->prox = l;
+        return novo;
+    }
+
+    l->prox = insereordenadorecursivorosseti(l->prox, x);
+    return l;
+
+
 }
 
 
