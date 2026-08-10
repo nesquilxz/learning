@@ -38,3 +38,24 @@ if (l != NULL) {
 
 
 //apenas revisao de funções recursivas para listas.
+
+
+
+//impreme arvore
+
+
+
+void imprimearvore (Tarv *a, int tab) {
+
+for (int i = 0; i < tab; i++) {printf("-");}
+
+if (a != NULL) {
+    printf("%c\n", a->info);
+    imprimearvore(a->esq, tab+2);
+    imprimearvore(a->dir, tab+2);
+    }
+else {
+printf("vazio!");
+
+}
+    
