@@ -36,6 +36,22 @@ Tpilha* pop(Tpilha *topo) {
 
 }
 
+// ou; 
+Tpilha* pop(Tpilha *topo) {
+
+    if(topo!=NULL) {
+
+        Tpilha *lixo = topo;
+    topo = topo->prox;
+    free(lixo);
+
+    }
+    
+
+    return topo;
+
+}
+
 
 
 int main(void) {
