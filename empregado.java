@@ -3,9 +3,9 @@ package com.pedrohenriques.projeto01.model;
 public class Empregado {
     private String nome; //string é uma classe, nao é primitivo (letra minuscula).
     private double salario;
-    private static String telefone = "22223333"; //static é um valor fixo ("Estatico").
+    private static String telefone = "22223333"; //static é um valor aderido a propria classe. o valor esta associado a classe. nao a um objeto.
 
-    public Empregado(String nome, double salario) {
+    public Empregado(String nome, double salario) { //classe construtora
         this.nome = nome;
         this.salario = salario; // classe com letra maiuscula, metodo com letra minuscula
         // para acessar o nome (que esta privado), devemos criar um metodo get
@@ -31,7 +31,7 @@ public class Empregado {
     }
 
     public void setSalario(double salario) {
-        this.salario = salario;
+        this.salario = salario; //os sets geralmente sao void, pois nao retornam nada
     }
 
     public void setNome(String nome) {
