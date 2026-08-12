@@ -15,10 +15,10 @@ void altera(TLista *li, int vantigo, int vnovo)
 
     TLista *aux = li;
 
-    while (aux->prox != NULL)
+    while (aux != NULL)
     {
 
-        if (aux->info = vantigo)
+        if (aux->info == vantigo)
         {
             aux->info = vnovo;
         }
