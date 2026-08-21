@@ -11,11 +11,11 @@ Tarvore *maior(Tarvore *a) {
     Tarvore *maior = a;
 
 
-    if (maiorEsq > maior) {
+    if (maiorEsq->info > maior->info) {
         maior = maiorEsq;
     }
 
-    else if(maiorDir > maior) {
+    else if(maiorDir->info > maior->info) {
         maior = maiorDir;
     }
 
