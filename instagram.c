@@ -81,7 +81,7 @@ int seguidores(TGrafo *g, char *nome, int imprime) {
     int cont = 0;
     TGrafo *aux = g; TVizinho *verif = NULL;
     while(aux != NULL) {
-        if(!strcmp(nome, aux->nome)) {aux = aux->prox; continue;} //pula pessoa que tem o nome que estamos varrendo com o aux, ja que queremos ver os seguidos dela, nao os seguidores dela
+        if(!strcmp(nome, aux->nome)) {aux = aux->prox; continue;} //pula pessoa que tem o nome que estamos varrendo com o aux, ja que queremos ver os seguidores dela, nao os seguidos dela
         verif = aux->prim_vizinho;
         while(verif != NULL) {
             if(!strcmp(nome, verif->nome)) {
