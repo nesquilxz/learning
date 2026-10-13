@@ -56,9 +56,9 @@ int busca(int chave, char *nome_arquivo_metadados, char *nome_arquivo_indice, ch
     free(m);
 
     if (pont == -1) return -1;
-
+	
     FILE *arq_i = NULL;
-    if (!folha) {
+    if (!folha) { //nao entendi muito bem esta parte. verifica se nao tem folha? mas isso seria contraditorio em fazer busca. como fazer busca em arv b+ que nao tem folha??
         arq_i = fopen(nome_arquivo_indice, "rb");
         if (arq_i == NULL) return -1;
     }
@@ -69,7 +69,7 @@ int busca(int chave, char *nome_arquivo_metadados, char *nome_arquivo_indice, ch
         return -1;
     }
 
-    while (!folha && pont != -1) {
+    while (!folha && pont != -1) { //n entendi aq tbm
         if (fseek(arq_i, pont, SEEK_SET) != 0) {
             pont = -1;
             break;
@@ -84,7 +84,7 @@ int busca(int chave, char *nome_arquivo_metadados, char *nome_arquivo_indice, ch
         imprime_no_interno(d, no);
 
         int i = 0;
-        while (i < no->m && chave >= no->chaves[i]) i++;
+        while (i < no->m && chave >= no->chaves[i]) i++; //aqui poderia er um if chave == no->chave[i] e ver se é, se for, entao pont = no->p[i] e ai da um return depois, nao?
 
         pont = no->p[i];
         folha = no->aponta_folha;
