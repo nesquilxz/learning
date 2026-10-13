@@ -1,4 +1,21 @@
-    //A leitura não segue ordem específica -- os nós são lidos na ordem em que foram gravados no arquivo
+// 1. Lê os metadados: pega a ordem d, o endereço da raiz em pont e a indicação folha, que informa se a raiz é uma folha. Depois libera m, pois esses valores já foram copiados.
+// 2. Abre os arquivos: se a raiz for interna, abre indice.dat. Também abre clientes.dat, onde estão as folhas.
+// 3. Desce pelos nós internos: o fseek posiciona a leitura no endereço pont. Depois, le_no_interno lê esse nó e imprime_no_interno o imprime.
+//    Aqui escolhemos por qual ponteiro continuar:
+//    int i = 0;
+//    while (i < no->m && chave >= no->chaves[i]) i++;
+   
+//    Por exemplo, num nó com 15 e 25:
+//    - buscando 10, segue por p[0];
+//    - buscando 20, segue por p[1];
+//    - buscando 25, segue por p[2].
+//    Na B+, igual também segue pela direita, porque o registro está na folha.
+// 4. Atualiza o caminho: pont = no->p[i] pega o endereço do próximo nó, e folha = no->aponta_folha informa se ele é uma folha. O nó atual é liberado, e o processo continua.
+// 5. Chega à folha: lê e imprime a folha em clientes.dat, fecha os arquivos e retorna seu endereço.
+// Ele retorna a folha onde a chave está ou deveria estar, mesmo se a chave não existir. As verificações de erro retornam -1 quando não é possível concluir a busca.
+
+
+//A leitura não segue ordem específica -- os nós são lidos na ordem em que foram gravados no arquivo
     FILE *arq_d = fopen("clientes.dat", "rb");
     printf("\n*** Arquivo de Dados ***\n");
     i = 0;
